@@ -23,13 +23,15 @@ app.get('/', function(req, res) {
 });
 
 app.post('/submitGoat', function(req, res) {
-    res.redirect('/');
-    var info = req.body;
-    console.log(info);
+    var info = JSON.parse(req.body.formData);
+    // console.log(info);
     allSubs.add(new ASub(info.userName, info.title, info.youtubeUrl, info.description))
-    for (var i = 0; i < allSubs.submissions.length; i++) {
-        console.log(allSubs.submissions[i]);
+    console.log(allSubs.submissions.length);
+    var sendInfo = {
+        message: 'Thank You ' + info.userName + ' for your submission!',
+        subL: allSubs.submissions.length
     };
+    res.send(JSON.stringify(sendInfo));
 
 })
 

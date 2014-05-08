@@ -6,8 +6,21 @@ html(lang='en')
     title Best goat videos
 
   body
-    h1 Welcome to best goat videos!
-    block content
+    div.container
+      div.row
+        div.col-xs-12
+          h1 Welcome to best goat videos!
+      div.row
+        div.col-xs-12
+          ul.nav.nav-pills
+            li.active
+              a(href="#") Home
+            li
+              a(href="#") View Submissions
+            li
+              a(href="#") Winner
+      block content
 
 
     script(type='text/javascript', src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
+    script(src="/main.js")
