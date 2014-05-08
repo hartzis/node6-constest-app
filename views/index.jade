@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  if isFull
+    h3 Contest is submission is now over! Please view and vote on submissions!
+  else
+    h3 Please submit your video
+    div.row
+      div.col-sm-12
+        form(action="/submitGoat" method="post" role="form")
+          legend YouTube submital form
+        
+          div.form-group
+            label(for="userName") Name
+            input(type="text" name="userName" class="form-control" placeholder="Name")
+            label(for="userName") Title
+            input(type="text" name="title" class="form-control" placeholder="Title")
+            label(for="userName") YouTube URL
+            input(type="text" name="youtubeUrl" class="form-control" placeholder="URL")
+            label(for="userName") Description
+            input(type="text" name="description" class="form-control" placeholder="Description")
+                 
+          input(type="submit" class="btn btn-primary")
