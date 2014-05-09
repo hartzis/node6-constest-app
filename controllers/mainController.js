@@ -43,7 +43,7 @@ module.exports = {
     postSubmitGoat: function(req, res) {
         var info = JSON.parse(req.body.formData);
         allSubs.add(new ASub(info));
-        var isFull = allSubs.submissions.length >= 4 ? true : false;
+        var isFull = allSubs.submissions.length >= 6 ? true : false;
         var sendInfo = {
             message: 'Thank You ' + info.userName + ' for your submission!',
             isFull: isFull
@@ -61,7 +61,7 @@ module.exports = {
         res.send(JSON.stringify(sendInfo));
     },
     getHome: function(req, res) {
-        var isFull = allSubs.submissions.length >= 4 ? true : false;
+        var isFull = allSubs.submissions.length >= 6 ? true : false;
         res.render('index', {
             isFull: isFull,
             cPath: req.path,
