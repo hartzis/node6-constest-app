@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  div.row
+    div.col-sm-6
+      h3 Current Submissions
+  if allSubs.length < 1
+    div.row
+      div.col-sm-6
+        h4 No Submissions Yet, Go Find Some Sweet Goat Videos!
+  else
+    for sub in allSubs
+      div.row
+        div.col-sm-6
+          iframe(width="560" height="315" src=sub.youtubeUrl frameborder='2' allowfullscreen)

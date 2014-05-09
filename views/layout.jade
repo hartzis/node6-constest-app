@@ -13,14 +13,14 @@ html(lang='en')
       div.row
         div.col-xs-12
           ul.nav.nav-pills
-            li.active
-              a(href="#") Home
-            li
-              a(href="#") View Submissions
-            li
-              a(href="#") Winner
+            li(class=getActiveNav('/',cPath))
+              a(href="/") Home
+            li(class=getActiveNav('/viewSubs',cPath))
+              a(href="/viewSubs") View Submissions
+            li(class=getActiveNav('/winner',cPath))
+              a(href="/winner") Winner
       block content
 
 
     script(type='text/javascript', src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js")
-    script(src="/main.js")
+  block scripts
