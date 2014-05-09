@@ -19,6 +19,8 @@ app.get('/viewSubs', mainController.getViewSubs)
 
 app.get('/winner', mainController.getWinner)
 
-var server = app.listen(9532, function() {
+// setup for heroku
+var port = Number(process.env.PORT || 9532);
+var server = app.listen(port, function() {
     console.log('Express server listening on port ' + server.address().port);
 });
