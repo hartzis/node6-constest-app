@@ -2,14 +2,26 @@ extends layout
 
 block content
   div.row
-    div.col-sm-6
+    div.col-sm-7.text-center
       h3 Current Submissions
   if allSubs.length < 1
     div.row
-      div.col-sm-6
+      div.col-sm-7
         h4 No Submissions Yet, Go Find Some Sweet Goat Videos!
   else
     for sub in allSubs
-      div.row
-        div.col-sm-6
-          iframe(width="560" height="315" src=sub.youtubeUrl frameborder='2' allowfullscreen)
+      div.row.submission(data-idKey=sub.idKey): div.col-sm-7
+          div.row: div.col-sm-12.text-center
+            div.panel.panel-info
+              div.panel-heading
+                h5.panel-title= sub.theTitle
+              div.panel-body
+                iframe(width="500" height="275" src=sub.youtubeUrl frameborder='2' allowfullscreen)
+              div.panel-footer
+                button(type="button" class="btn btn-default btn-xs vote") Vote for this video
+                span &nbsp;Current Votes:&nbsp;
+                span.current-votes #{sub.votes}
+
+
+block scripts
+  script(src="/vote.js")

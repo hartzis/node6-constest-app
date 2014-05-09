@@ -4,21 +4,28 @@ html(lang='en')
     meta(charset="utf-8")
     link(rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.min.css" type="text/css")
     title Best goat videos
+    style.
+      .nav>li {
+        float: none;
+        display: inline-block;
+        }
 
   body
     div.container
       div.row
-        div.col-xs-12
+        div.col-xs-7.text-center
           h1 Welcome to best goat videos!
       div.row
-        div.col-xs-12
-          ul.nav.nav-pills
-            li(class=getActiveNav('/',cPath))
-              a(href="/") Home
-            li(class=getActiveNav('/viewSubs',cPath))
-              a(href="/viewSubs") View Submissions
-            li(class=getActiveNav('/winner',cPath))
-              a(href="/winner") Winner
+        div.col-xs-7
+          div.row
+            div.col-xs-12
+              ul.nav.nav-pills.text-center
+                li(class=getActiveNav('/',cPath))
+                  a(href="/") Home/Submit
+                li(class=getActiveNav('/viewSubs',cPath))
+                  a(href="/viewSubs") View Submissions
+                li(class=getActiveNav('/winner',cPath))
+                  a(href="/winner") Winner
       block content
 
 

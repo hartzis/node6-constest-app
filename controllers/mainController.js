@@ -11,15 +11,52 @@ var allSubs = new Submissions();
 // require the aSub model
 var ASub = require('../models/aSub.js')
 
+allSubs.add(new ASub({
+    userName: "me",
+    youtubeUrl: "//www.youtube.com/embed/G_pnX55avyk",
+    title: "vined goats",
+    description: "this is the awesome"
+}))
+allSubs.add(new ASub({
+    userName: "me",
+    youtubeUrl: "//www.youtube.com/embed/G_pnX55avyk",
+    title: "vined goats2",
+    description: "this is the awesome"
+}))
+allSubs.add(new ASub({
+    userName: "me",
+    youtubeUrl: "//www.youtube.com/embed/G_pnX55avyk",
+    title: "vined goats3",
+    description: "this is the awesome"
+}))
+allSubs.add(new ASub({
+    userName: "me",
+    youtubeUrl: "//www.youtube.com/embed/G_pnX55avyk",
+    title: "vined goats4",
+    description: "this is the awesome"
+}))
+for (var i = 0; i < allSubs.submissions.length; i++) {
+    allSubs.submissions[i].votes += i
+};
+
 module.exports = {
     postSubmitGoat: function(req, res) {
         var info = JSON.parse(req.body.formData);
-        console.log(info);
-        allSubs.add(new ASub(info.userName, info.youtubeUrl, info.title, info.description))
+        allSubs.add(new ASub(info));
         var isFull = allSubs.submissions.length >= 4 ? true : false;
         var sendInfo = {
             message: 'Thank You ' + info.userName + ' for your submission!',
             isFull: isFull
+        };
+        res.send(JSON.stringify(sendInfo));
+    },
+    postVoteGoat: function(req, res) {
+        var info = JSON.parse(req.body.theVote);
+        var theVideo = allSubs.findByIdKey(info.idKey);
+        theVideo.votes += 1;
+        var sendInfo = {
+            idKey: theVideo.idKey,
+            votes: theVideo.votes
         };
         res.send(JSON.stringify(sendInfo));
     },
@@ -33,7 +70,6 @@ module.exports = {
     },
 
     getViewSubs: function(req, res) {
-        console.log(allSubs.submissions);
         res.render('viewSubs', {
             cPath: req.path,
             getActiveNav: getActiveNav,
@@ -42,9 +78,11 @@ module.exports = {
     },
 
     getWinner: function(req, res) {
+        var winningSubs = allSubs.winners();
         res.render('winner', {
             cPath: req.path,
-            getActiveNav: getActiveNav
+            getActiveNav: getActiveNav,
+            allSubs: winningSubs
         });
     }
 }

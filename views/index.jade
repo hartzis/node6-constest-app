@@ -3,16 +3,16 @@ extends layout
 block content
   if isFull
     div.row
-      div.col-sm-6
+      div.col-sm-7
         h3 Contest submission is now over! Please view and vote on submissions!
   else
     div.row(id="submitalContainer")
-      div.col-sm-12
+      div.col-sm-7
         div.row
-          div.col-sm-6
+          div.col-sm-12.text-center
             h3 Please submit your video
         div.row
-          div.col-sm-6
+          div.col-sm-12.text-center
             form(action="" method="" role="form" id="goatForm")
               legend YouTube submital form
               div.form-group

@@ -1,4 +1,22 @@
 extends layout
 
 block content
-  h3 Current Submissions
+  div.row
+    div.col-sm-7.text-center
+      if allSubs.length > 1
+        h3 Current Winners
+      else if allSubs.length === 1
+        h3 Current Winner
+      else
+        h3 No Winner yet go vote/submit!
+  for sub in allSubs
+    div.row.submission(data-idKey=sub.idKey): div.col-sm-7
+        div.row: div.col-sm-12.text-center
+          div.panel.panel-info
+            div.panel-heading
+              h5.panel-title= sub.theTitle
+            div.panel-body
+              iframe(width="500" height="275" src=sub.youtubeUrl frameborder='2' allowfullscreen)
+            div.panel-footer
+              span &nbsp;Current Votes:&nbsp;
+              span.current-votes #{sub.votes}

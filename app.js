@@ -15,6 +15,8 @@ app.get('/', mainController.getHome);
 
 app.post('/submitGoat', mainController.postSubmitGoat)
 
+app.post('/voteGoat', mainController.postVoteGoat)
+
 app.get('/viewSubs', mainController.getViewSubs)
 
 app.get('/winner', mainController.getWinner)
